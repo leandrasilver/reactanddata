@@ -5,9 +5,9 @@ class Table extends React.Component {
 	render() {
 		const { data } = this.props;
 		console.log (data)
-		const columnData = data.map(row => {
+		const columnData = data.map((row,i)=> {
 			return (
-				<tr> 
+				<tr key={`row-${i+1}`}> 
 					<td className="table__issuer">{row.securityName}</td>
 					<td className="cell--spacer"></td>
 					<td className="left--align">{row.description}</td>
@@ -55,5 +55,9 @@ class Table extends React.Component {
 	    );
 	}
 }
+
+Table.propTypes = {
+  data: React.PropTypes.array
+};
 
 export default Table;
